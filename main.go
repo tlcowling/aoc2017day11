@@ -24,18 +24,24 @@ func main() {
 		"nw": 0,
 	}
 
+	max := 0
+
 	for _, direction := range directions {
 		directionCount[direction]++
+		steps := stepsAway(directionCount)
+		if steps > max {
+			max = steps
+		}
 	}
 
-	y := directionCount["n"] + directionCount["nw"] - directionCount["se"] - directionCount["s"]
-	z := directionCount["s"] + directionCount["sw"] - directionCount["ne"] - directionCount["n"]
-	x := directionCount["ne"] + directionCount["se"] - directionCount["nw"] - directionCount["sw"]
-
-	fmt.Println(stepsAway(x, y, z))
+	fmt.Println(stepsAway(directionCount))
+	fmt.Println(max)
 }
 
-func stepsAway(x, y, z int) int {
+func stepsAway(directionsCountMap map[string]int) int {
+	y := directionsCountMap["n"] + directionsCountMap["nw"] - directionsCountMap["se"] - directionsCountMap["s"]
+	z := directionsCountMap["s"] + directionsCountMap["sw"] - directionsCountMap["ne"] - directionsCountMap["n"]
+	x := directionsCountMap["ne"] + directionsCountMap["se"] - directionsCountMap["nw"] - directionsCountMap["sw"]
 	abs := math.Abs(float64(x)) + math.Abs(float64(y)) + math.Abs(float64(z))
 	return int(abs / 2)
 }
