@@ -1,0 +1,12 @@
+{
+	"ImportPath": "github.com/tlcowling/aoc2017",
+	"GoVersion": "go1.9",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/yourbasic/graph",
+			"Comment": "1.0.5",
+			"Rev": "40eb135c0b2618a87b653037e2697f58436d4666"
+		}
+	]
+}
